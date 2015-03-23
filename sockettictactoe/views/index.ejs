@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="stylesheets/index.css">
+  <title>Interactive Tic-Tac-Toe</title>
+</head>
+<body>
+
+  <div id="scores">
+  <h1 class="text-center">Tic-Tac-Toe With A Friend</h1>
+
+  <div class="row">
+      <div class="col-xs-3 col-xs-offset-1">
+        <p id="p1" class="text-center player">Player 1-X</p>
+      </div>
+      <div class="col-xs-2 col-xs-offset-1">
+        <button id="reset" class="text-center player btn btn-default">Reset</button>
+      </div>
+      <div class="col-xs-3 col-xs-offset-1">
+        <p id="p2" class="text-center player">Player 2-O</p>
+      </div>
+    </div> <br>
+    
+  </div>
+  <div id="game">
+      <div class="row ">
+    <div  class="col-sm-3 col-sm-offset-1 row1">
+      <p id="1" class="text-center game"> </p>
+    </div>
+    <div class="col-sm-4 row1">
+      <p id="2" class="text-center game"> </p>
+    </div>
+    <div class="col-sm-3 row1 col3">
+      <p id="3" class="text-center game"> </p>
+    </div>
+  </div>
+  <!-- middle row -->
+  <div class="row">
+    <div class="col-xs-3 col-sm-offset-1 row2">
+      <p id="4" class="text-center game"> </p>
+    </div>
+    <div class="col-xs-4 row2">
+      <p id="5" class="text-center game"> </p>
+    </div>
+    <div class="col-xs-3 row2 col3">
+      <p id="6" class="text-center game"> </p>
+    </div>
+  </div>
+  <!-- bottom row -->
+  <div class="row">
+    <div class="col-sm-3 col-xs-offset-1 row3">
+      <p id="7" class="text-center game"> </p>
+    </div>
+    <div class="col-xs-4 row3">
+      <p id="8" class="text-center game"> </p>
+    </div>
+    <div class="col-xs-3 row3 col3">
+      <p id="9" class="text-center game"> </p>
+    </div>
+  </div> <br>
+  </div>
+
+  <div id="chat-view">
+    <ul id="chat-list"></ul>
+  </div>
+  <div id="chat-type">
+    <form action="">
+      <input type="text" name="chat-msg" id="chat-msg" autocomplete="off" autofocus><input type="submit" value="Send" class="btn btn-primary btn-lg">
+    </form>
+  </div>
+  
+  <script src="javascripts/index.js"></script>
+</body>
+</html>

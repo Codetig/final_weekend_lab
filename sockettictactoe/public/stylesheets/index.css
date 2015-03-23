@@ -1,0 +1,76 @@
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body { 
+  font: 13px Helvetica, Arial;
+}
+
+#chat-type { 
+  background: #000;
+  padding: 3px;
+  position: fixed;
+  bottom: 0; 
+  width: 100%;
+}
+
+#chat-type form input {
+  padding: 5px;
+  font-size: 16px;
+  height: 8%;
+  width: 10.5%; 
+}
+
+#chat-type form #chat-msg {
+  width: 88%; 
+  margin: .5%;
+}
+
+#chat-list { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+}
+
+#chat-list li { 
+  padding: 5px 10px; 
+}
+
+#chat-list li:nth-child(odd) {
+ background: #eee; 
+}
+
+.row1 {
+  border-right: solid black 3px;
+  border-bottom: solid black 3px;
+  height: 80px;
+}
+.row2 {
+  border-right: solid black 3px;
+  border-bottom: solid black 3px;
+  height: 80px;
+}
+.row3 {
+  height: 80px;
+  border-right: solid black 3px;
+}
+.col3 {
+  border-right: none white 3px;
+}
+
+.game {
+  height: 70px;
+  font-size: 60px; 
+}
+.player {
+  border: dotted gray 2px;
+  border-radius: 20px;
+  font-size: 40px;
+}
+
+#reset{
+  border: solid black 1px
+}
+
