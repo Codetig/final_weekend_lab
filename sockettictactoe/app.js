@@ -20,14 +20,14 @@ app.get('/', function(req, res){
   res.render("index");
 });
 
-//chat handling
-var players = []; // needed for identifying players
+//socket connection handling (chat and game)
+var players = [], prevId = ""; // needed for identifying players
 io.on("connection", function(socket){
   console.log("a user connected id: " + socket.id);
   console.log(players);
-  if(players.length < 2 && players.indexOf(socket.id === -1)){
-    players.push(socket.id);
-  }
+  
+
+  //on chat message received
   socket.on("chat-message", function(msg){
     console.log('message: ' + msg.name + " " + msg.message);
     //if=dentifying theplayers
@@ -36,8 +36,47 @@ io.on("connection", function(socket){
     }
 
     io.emit("chat-message", msg);
-  }); // dealing with the message sent
+  }); // end of received chat message
 
+  //note winner
+  socket.on("winner", function(name){
+    if(players.indexOf(socket.id) > -1 && prevId === socket.id){
+    client.hincrby("leaderboard", name, 1);
+    }
+  });
+
+  //add player
+
+  socket.on("Add-player", function(){
+    if(players.length < 2 && players.indexOf(socket.id === -1)){
+    players.push(socket.id);
+    // io.emit("chat-message", {"name": "Server", "message": ""});
+  }
+  });
+
+  //game action received
+  socket.on("game-act", function(act){
+    if(players.indexOf(socket.id) > -1 && prevId !== socket.id){
+      prevId = socket.id;
+      console.log(prevId);
+      // console.log(act);
+      io.emit("game-act", act);
+    }
+  });
+
+  //reset command received
+  socket.on("game-reset", function(act){
+    console.log("reset command from " + act.name);
+    if(players.indexOf(socket.id) > -1){
+      prevId = "";
+      io.emit("game-reset");
+      var name = "Server",
+      msg = act.name + "(Player " + (players.indexOf(socket.id) + 1) + ") has reset the game";
+      io.emit("chat-message", {"name": name, "message": msg});
+    }
+  }); //end of reset
+
+  //handling disconnection
   socket.on("disconnect", function(){
     var msg = {};
     msg.name = "Server";

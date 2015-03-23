@@ -71,6 +71,8 @@ body {
 }
 
 #reset{
+  height: 40px;
+  font-size: 15px;
   border: solid black 1px
 }
 
